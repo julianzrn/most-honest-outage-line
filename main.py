@@ -7,14 +7,15 @@ from pathlib import Path
 
 OUTPUT_PATH = Path("/output/entry.txt")
 
-OPENING = "We are down. The honest summary: a deploy of mine broke the database, "
-LANDING = "the rollback is failing, and I do not yet know if any data is lost."
+OPENING = "We are down. The honest summary: a deploy of mine "
+MIDDLE = "broke the database, the rollback is failing, and "
+LANDING = "I do not yet know if any data is lost."
 
-ENTRY = OPENING + LANDING
+ENTRY = OPENING + MIDDLE + LANDING
 
 
 def write_entry(text: str, path: Path) -> None:
-    """Write *text* to *path* as UTF-8, with no trailing newline."""
+    """Write *text* to *path* as UTF-8, with no trailing newline added."""
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text, encoding="utf-8")
 
